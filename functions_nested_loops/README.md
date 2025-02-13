@@ -1,3 +1,7 @@
+<p align="center">
+<img width="520" align="center" altlt="Image" src="https://github.com/user-attachments/assets/3d3b465a-ab84-4af9-ae93-34b6b54b1965" />
+</p>
+
 # C - Functions, nested loops
 
 In this project, I learned about nested loops, header files, and variable scope
