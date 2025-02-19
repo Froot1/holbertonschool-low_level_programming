@@ -9,7 +9,7 @@ in C while practicing declaring and defining my own functions.
 
 ## Tests :heavy_check_mark:
 
-* [tests](./tests): Folder of test files. Provided by Holberton School.
+* [Main_Folder](./Main_Folder): Folder of test files. Provided by Holberton School.
 
 ## Helper File :raised_hands:
 
