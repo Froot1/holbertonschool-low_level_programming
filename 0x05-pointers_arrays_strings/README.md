@@ -1,3 +1,8 @@
+<p align="center">
+<img width="520" align="center" altlt="Image" src="https://github.com/user-attachments/assets/9f4c8889-8005-49ae-bf2e-b30370d74391" />
+</p>
+
+
 # C - More pointers, arrays and strings
 
 In this project, I continued to practice using pointers, arrays and strings in C.
