@@ -13,31 +13,17 @@
  */
 char *_strcat(char *dest, char *src)
 {
-	int i, j, a, b = 0;
+	int i, c;
 
-	while (1)
+	for (i = 0; dest[i] != '\0'; i++)
+		;
+
+	for (c = 0; src[c] != '\0'; c++)
 	{
-		if (*(dest + i) == '\0')
-			break;
-
+		dest[i] = src[c];
 		i++;
 	}
 
-	while (1)
-	{
-		if (*(src + j) == '\0')
-			break;
-
-		j++;
-	}
-
-	for (a = i; a < i + j; a++)
-	{
-		*(dest + a) = *(src + b);
-		b++;
-	}
-
-	*(dest + a) = '\0';
-
+	dest[i] = '\0';
 	return (dest);
 }
