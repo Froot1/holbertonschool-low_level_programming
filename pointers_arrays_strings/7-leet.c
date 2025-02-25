@@ -1,10 +1,16 @@
+/*
+ * File: 7-_leet.c
+ * Auth: Fahad Alonazi
+ */
+
+#include "main.h"
+
 /**
  * leet - Encodes a string into 1337 speak
  * @str: The input string to be encoded
  *
  * Return: The encoded string
  */
-#include "main.h"
 
 char *leet(char *str)
 {
