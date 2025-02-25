@@ -1,5 +1,5 @@
 /*
- * File: 2-strncpy.c
+ * File: 2-_strncpy.c
  * Auth: Fahad Alonazi
  */
 
