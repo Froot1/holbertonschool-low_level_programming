@@ -1,5 +1,5 @@
 /*
- * File: 2-strchr.c
+ * File: 2-_strchr.c
  * Auth: Fahad Alonazi
  */
 
