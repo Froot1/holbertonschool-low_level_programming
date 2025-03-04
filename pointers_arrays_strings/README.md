@@ -75,7 +75,7 @@ in the project.
   diagonals of a square matrix of integers.
 
 * **8. Double pointer, double fun**
-  * [9-set_string.c](./9-set_string.c): C function that sets the value of a pointer to a char.
+  * [100-set_string.c](./100-set_string.c): C function that sets the value of a pointer to a char.
 
 * **9. My primary goal of hacking was the intellectual curiosity, the seduction of adventure**
   * [101-crackme_password](./101-crackme_password): File containing the password for
