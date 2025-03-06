@@ -19,7 +19,7 @@ working in the C language. The specific list of projects contained follows:
 * [0x05. C - More pointers, arrays and strings](./0x05-pointers_arrays_strings)
 * [0x06. C - Even more pointers, arrays and strings](./0x06-pointers_arrays_strings)
 * [0x07. C - Recursion](./0x07-recursion)
-* [0x8. C - argc, argv](./0x8-argc_argv)
+* [0x8. C - argc, argv](./0x08-argc_argv)
 * [0x0A. C - malloc, free](./0x0A-malloc_free)
 * [0x0B. C - More malloc, free](./0x0B-more_malloc_free)
 * [0x0C. C - Preprocessor](./0x0C-preprocessor)
