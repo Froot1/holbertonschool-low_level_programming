@@ -1,3 +1,7 @@
+<p align="center">
+<img width="520" align="center" altlt="Image" src="https://github.com/user-attachments/assets/0a533f44-d934-42ed-af69-852474a266ea" />
+</p>
+
 # C - malloc, free
 
 In this project, I learned about the difference between automatic
