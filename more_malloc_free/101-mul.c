@@ -2,151 +2,104 @@
  * File: 101-_mul.c
  * Auth: Fahad Alonazi
  */
-
 #include "main.h"
 #include <stdlib.h>
+#include <stdio.h>
+
+#define ERR_MSG "Error"
 
 /**
- * initDigitArray - allocates and sets to 0 an array to contain the digits
- *   of a base 10 number
+ * is_digit - checks if a string contains a non-digit char
+ * @s: string to be evaluated
  *
- * @size: array size
- * Return: pointer to initialized array, or NULL on failure
+ * Return: 0 if a non-digit is found, 1 otherwise
  */
-unsigned int *initDigitArray(size_t size)
+int is_digit(char *s)
 {
-	unsigned int *arr = NULL;
-	size_t i;
+	int i = 0;
 
-	arr = malloc(sizeof(unsigned int) * size);
-	if (!arr)
-		return (NULL);
-
-	for (i = 0; i < size; i++)
-		arr[i] = 0;
-
-	return (arr);
-}
-
-
-/**
- * stringIntMultiply - TBD
- *
- * @prod_digits: array to store digits of product
- * @n1_digits: string containing multiplicand digits in ASCII
- * @n2_digits: string containing multiplier digits in ASCII
- * @n1_len: amount of digits in multiplicand
- * @n2_len: amount of digits in multiplier
- */
-void stringIntMultiply(unsigned int *prod_digits, char *n1_digits,
-		       char *n2_digits, size_t n1_len, size_t n2_len)
-{
-	int i, j, sum;
-	unsigned char digit1, digit2;
-
-	if (prod_digits == NULL || n1_digits == NULL || n2_digits == NULL)
-		return;
-
-	for (i = n1_len - 1; i >= 0; i--)
-	{
-		sum = 0;
-		digit1 = n1_digits[i] - '0';
-
-		for (j = n2_len - 1; j >= 0; j--)
-		{
-			digit2 = n2_digits[j] - '0';
-
-			sum += prod_digits[i + j + 1] + (digit1 * digit2);
-
-			prod_digits[i + j + 1] = sum % 10;
-
-			sum /= 10;
-		}
-
-		if (sum > 0)
-			prod_digits[i + j + 1] += sum;
-	}
-}
-
-
-/**
- * stringIsPosInt - validates if string represents a positive integer
- *
- * @s: string to test
- * Return: 1 if true, 0 if false
- */
-int stringIsPosInt(char *s)
-{
-	size_t i;
-
-	for (i = 0; s[i]; i++)
+	while (s[i])
 	{
 		if (s[i] < '0' || s[i] > '9')
 			return (0);
+		i++;
 	}
-
 	return (1);
 }
 
-
 /**
- * error - error return
+ * _strlen - returns the length of a string
+ * @s: string to evaluate
  *
- * @status: error code to exit with
+ * Return: the length of the string
  */
-void error(int status)
+int _strlen(char *s)
 {
-	_putchar('E');
-	_putchar('r');
-	_putchar('r');
-	_putchar('o');
-	_putchar('r');
-	_putchar('\n');
-	exit(status);
+	int i = 0;
+
+	while (s[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
 }
 
+/**
+ * errors - handles errors for main
+ */
+void errors(void)
+{
+	printf("Error\n");
+	exit(98);
+}
 
 /**
- * main - entry point
+ * main - multiplies two positive numbers
+ * @argc: number of arguments
+ * @argv: array of arguments
  *
- * @argc: number of commmand line arguments
- * @argv: array of commmand line arguments
- * Return: 0 on success, 98 on failure
+ * Return: always 0 (Success)
  */
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
-	size_t i, av1_len, av2_len, prod_len;
-	unsigned int *prod_digits = NULL;
+	char *s1, *s2;
+	int len1, len2, len, i, carry, digit1, digit2, *result, a = 0;
 
-	if (argc != 3 || !stringIsPosInt(argv[1]) ||
-	    !stringIsPosInt(argv[2]))
-		error(98);
-
-	for (i = 0, av1_len = 0; argv[1][i]; i++)
-		av1_len++;
-
-	for (i = 0, av2_len = 0; argv[2][i]; i++)
-		av2_len++;
-
-	prod_len = av1_len + av2_len;
-	prod_digits = initDigitArray(prod_len);
-	if (prod_digits == NULL)
-		error(98);
-
-	stringIntMultiply(prod_digits, argv[1], argv[2], av1_len, av2_len);
-
-	/* omit leading zeroes */
-	for (i = 0; !prod_digits[i] && i < prod_len; i++)
-	{}
-
-	if (i == prod_len)
+	s1 = argv[1], s2 = argv[2];
+	if (argc != 3 || !is_digit(s1) || !is_digit(s2))
+		errors();
+	len1 = _strlen(s1);
+	len2 = _strlen(s2);
+	len = len1 + len2 + 1;
+	result = malloc(sizeof(int) * len);
+	if (!result)
+		return (1);
+	for (i = 0; i <= len1 + len2; i++)
+		result[i] = 0;
+	for (len1 = len1 - 1; len1 >= 0; len1--)
+	{
+		digit1 = s1[len1] - '0';
+		carry = 0;
+		for (len2 = _strlen(s2) - 1; len2 >= 0; len2--)
+		{
+			digit2 = s2[len2] - '0';
+			carry += result[len1 + len2 + 1] + (digit1 * digit2);
+			result[len1 + len2 + 1] = carry % 10;
+			carry /= 10;
+		}
+		if (carry > 0)
+			result[len1 + len2 + 1] += carry;
+	}
+	for (i = 0; i < len - 1; i++)
+	{
+		if (result[i])
+			a = 1;
+		if (a)
+			_putchar(result[i] + '0');
+	}
+	if (!a)
 		_putchar('0');
-
-	for (; i < prod_len; i++)
-		_putchar(prod_digits[i] + '0');
 	_putchar('\n');
-
-	free(prod_digits);
-
+	free(result);
 	return (0);
 }
