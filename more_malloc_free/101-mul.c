@@ -6,7 +6,6 @@
 #include "main.h"
 #include <stdlib.h>
 
-
 /**
  * initDigitArray - allocates and sets to 0 an array to contain the digits
  *   of a base 10 number
