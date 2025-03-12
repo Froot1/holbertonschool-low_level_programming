@@ -4,109 +4,150 @@
  */
 
 #include "main.h"
-#include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
-#include <string.h>
+
 
 /**
- * is_positive_number - Checks if a string represents a positive number
- * @str: The string to check
+ * initDigitArray - allocates and sets to 0 an array to contain the digits
+ *   of a base 10 number
  *
- * Return: 1 if the string is a positive number, 0 otherwise
+ * @size: array size
+ * Return: pointer to initialized array, or NULL on failure
  */
-int is_positive_number(char *str)
+unsigned int *initDigitArray(size_t size)
 {
-	if (!str || *str == '\0')
-		return (0);
+	unsigned int *arr = NULL;
+	size_t i;
 
-	while (*str)
+	arr = malloc(sizeof(unsigned int) * size);
+	if (!arr)
+		return (NULL);
+
+	for (i = 0; i < size; i++)
+		arr[i] = 0;
+
+	return (arr);
+}
+
+
+/**
+ * stringIntMultiply - TBD
+ *
+ * @prod_digits: array to store digits of product
+ * @n1_digits: string containing multiplicand digits in ASCII
+ * @n2_digits: string containing multiplier digits in ASCII
+ * @n1_len: amount of digits in multiplicand
+ * @n2_len: amount of digits in multiplier
+ */
+void stringIntMultiply(unsigned int *prod_digits, char *n1_digits,
+		       char *n2_digits, size_t n1_len, size_t n2_len)
+{
+	int i, j, sum;
+	unsigned char digit1, digit2;
+
+	if (prod_digits == NULL || n1_digits == NULL || n2_digits == NULL)
+		return;
+
+	for (i = n1_len - 1; i >= 0; i--)
 	{
-		if (!isdigit(*str))
+		sum = 0;
+		digit1 = n1_digits[i] - '0';
+
+		for (j = n2_len - 1; j >= 0; j--)
+		{
+			digit2 = n2_digits[j] - '0';
+
+			sum += prod_digits[i + j + 1] + (digit1 * digit2);
+
+			prod_digits[i + j + 1] = sum % 10;
+
+			sum /= 10;
+		}
+
+		if (sum > 0)
+			prod_digits[i + j + 1] += sum;
+	}
+}
+
+
+/**
+ * stringIsPosInt - validates if string represents a positive integer
+ *
+ * @s: string to test
+ * Return: 1 if true, 0 if false
+ */
+int stringIsPosInt(char *s)
+{
+	size_t i;
+
+	for (i = 0; s[i]; i++)
+	{
+		if (s[i] < '0' || s[i] > '9')
 			return (0);
-		str++;
 	}
 
 	return (1);
 }
 
+
 /**
- * multiply_strings - Multiplies two large positive numbers as strings
- * @num1: First number as string
- * @num2: Second number as string
+ * error - error return
  *
- * Return: The result as a dynamically allocated string
+ * @status: error code to exit with
  */
-char *multiply_strings(char *num1, char *num2)
+void error(int status)
 {
-	int len1 = strlen(num1), len2 = strlen(num2);
-	int *result = calloc(len1 + len2, sizeof(int));
-	char *final_result;
-	int i, j, product;
-
-	if (!result)
-	{
-		printf("Error\n");
-		exit(98);
-	}
-
-	for (i = len1 - 1; i >= 0; i--)
-	{
-		for (j = len2 - 1; j >= 0; j--)
-		{
-			product = (num1[i] - '0') * (num2[j] - '0') + result[i + j + 1];
-			result[i + j + 1] = product % 10;
-			result[i + j] += product / 10;
-		}
-	}
-
-	final_result = malloc(len1 + len2 + 1);
-	if (!final_result)
-	{
-		printf("Error\n");
-		exit(98);
-	}
-
-	i = 0;
-	while (i < len1 + len2 && result[i] == 0)
-		i++;
-
-	j = 0;
-	while (i < len1 + len2)
-		final_result[j++] = result[i++] + '0';
-
-	final_result[j] = '\0';
-	free(result);
-
-	return (*final_result ? final_result : strdup("0"));
+	_putchar('E');
+	_putchar('r');
+	_putchar('r');
+	_putchar('o');
+	_putchar('r');
+	_putchar('\n');
+	exit(status);
 }
 
+
 /**
- * main - Multiplies two positive numbers passed as arguments
- * @argc: Argument count
- * @argv: Argument vector
+ * main - entry point
  *
- * Return: 0 on success, 98 on error
+ * @argc: number of commmand line arguments
+ * @argv: array of commmand line arguments
+ * Return: 0 on success, 98 on failure
  */
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
-	char *result;
+	size_t i, av1_len, av2_len, prod_len;
+	unsigned int *prod_digits = NULL;
 
-	if (argc != 3)
-	{
-		printf("Error\n");
-		return (98);
-	}
+	if (argc != 3 || !stringIsPosInt(argv[1]) ||
+	    !stringIsPosInt(argv[2]))
+		error(98);
 
-	if (!is_positive_number(argv[1]) || !is_positive_number(argv[2]))
-	{
-		printf("Error\n");
-		return (98);
-	}
+	for (i = 0, av1_len = 0; argv[1][i]; i++)
+		av1_len++;
 
-	result = multiply_strings(argv[1], argv[2]);
-	printf("%s\n", result);
-	free(result);
+	for (i = 0, av2_len = 0; argv[2][i]; i++)
+		av2_len++;
+
+	prod_len = av1_len + av2_len;
+	prod_digits = initDigitArray(prod_len);
+	if (prod_digits == NULL)
+		error(98);
+
+	stringIntMultiply(prod_digits, argv[1], argv[2], av1_len, av2_len);
+
+	/* omit leading zeroes */
+	for (i = 0; !prod_digits[i] && i < prod_len; i++)
+	{}
+
+	if (i == prod_len)
+		_putchar('0');
+
+	for (; i < prod_len; i++)
+		_putchar(prod_digits[i] + '0');
+	_putchar('\n');
+
+	free(prod_digits);
 
 	return (0);
 }
