@@ -46,7 +46,13 @@ int _strlen(char *s)
  */
 void errors(void)
 {
-	printf("Error\n");
+	char error_msg[] = "Error\n";
+	int i = 0;
+	while (error_msg[i])
+	{
+		_putchar(error_msg[i]);
+		i++;
+	}
 	exit(98);
 }
 
@@ -92,11 +98,11 @@ int main(int argc, char *argv[])
 		if (result[i])
 			a = 1;
 		if (a)
-			putchar(result[i] + '0');
+			_putchar(result[i] + '0');
 	}
 	if (!a)
-		putchar('0');
-	putchar('\n');
+		_putchar('0');
+	_putchar('\n');
 	free(result);
 	return (0);
 }
