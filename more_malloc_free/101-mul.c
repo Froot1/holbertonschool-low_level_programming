@@ -48,7 +48,9 @@ void errors(void)
 {
 	char error_msg[] = "Error\n";
 	int i = 0;
+
 	while (error_msg[i])
+
 	{
 		_putchar(error_msg[i]);
 		i++;
