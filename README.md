@@ -36,7 +36,7 @@ working in the C language. The specific list of projects contained follows:
 
 ## Author :black_nib:
 
-* __Fahad Alonazi__ <[Froot1](https://github.com/Froot1)>
+* __*Fahad Alonazi*__ <[Froot1](https://github.com/Froot1)>
 
 ## Acknowledgements :pray:
 
