@@ -25,7 +25,7 @@ working in the C language. The specific list of projects contained follows:
 * [0x11. C - Structures, typedef](./0x11-structures_typedef)
 * [0x12. C - Function pointers](./0x12-function_pointers)
 * [0x13. C - Variadic functions](./0x13-variadic_functions)
-* [0x14. C - printf](./0x14-printf)
+* [0x14. C - printf](https://github.com/Froot1/holbertonschool-printf)
 * [0x15. C - Singly linked lists](./0x15-singly_linked_lists)
 * [0x16. C - Doubly linked lists](./0x16-doubly_linked_lists)
 * [0x17. C - Bit manipulation](./0x17-bit_manipulation)
