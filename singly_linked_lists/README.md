@@ -37,4 +37,4 @@ What you should learn from this project:
 ---
 
 ## Author
-* **Fahad Alonazi** - [Froot1](https://github.com/settings/profile)
+* **Fahad Alonazi** - [Froot1](https://github.com/Froot1)
