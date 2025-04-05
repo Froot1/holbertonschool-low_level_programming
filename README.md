@@ -27,18 +27,12 @@ working in the C language. The specific list of projects contained follows:
 * [0x13. C - Variadic functions](./0x13-variadic_functions)
 * [0x14. C - printf](./0x14-printf)
 * [0x15. C - Singly linked lists](./0x15-singly_linked_lists)
-* [0x16. C - More singly linked lists](./0x16-more_singly_linked_lists)
+* [0x16. C - Doubly linked lists](./0x16-doubly_linked_lists)
 * [0x17. C - Bit manipulation](./0x17-bit_manipulation)
 * [0x18. C - File I/O](./0x18-file_io)
-* [0x19. C - Simple Shell](./0x19-simple_shell)
-* [0x20. C - Doubly linked lists](./0x20-doubly_linked_lists)
-* [0x21. C - Dynamic libraries](./0x21-dynamic_libraries)
-* [0x22. C - Stacks, Queues - LIFO, FIFO](./0x22-monty)
-* [0x23. C - Hash tables](./0x23-hash_tables)
-* [0x24. C - Sorting algorithms & Big O](./0x24-sorting_algorithms)
-* [0x25. C - Makefiles](./0x25-makefiles)
-* [0x26. C - Binary trees](./0x26-binary_trees)
-* [0x27. C - Search Algorithms](./0x27-search_algorithms)
+* [0x19. C - Binary trees](./0x19-binary_trees)
+* [0x20. C - Sorting algorithms & Big O](./0x20-sorting_algorithms)
+* [0x21. C - Simple Shell](./0x21-simple_shell)
 
 ## Author :black_nib:
 
