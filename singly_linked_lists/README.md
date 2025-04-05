@@ -1,3 +1,7 @@
+<p align="center">
+<img width="520" align="center" altlt="Image" src="https://github.com/user-attachments/assets/2c0209ea-4cdf-41c3-aef4-e380991dba36" />
+</p>
+
 # 0x12. C - Singly linked lists
 
 ## Description
